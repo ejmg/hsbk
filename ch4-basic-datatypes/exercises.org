@@ -138,8 +138,8 @@
           > :t reverse
           reverse :: [a] -> [a]
           > reverse "blah"
-          "halb
-
+          "halb"
+          -- solution, bitch
           palindrome :: [a] -> [a]
           palindrome x =
             x == (reverse x)
@@ -160,5 +160,46 @@
          #+BEGIN_SRC haskell
            -- given
            f :: (a, b) -> (c, d) -> ((b, d), (a, c))
-           f = 
+           f x y = ((,) (snd x, snd y) (fst x, fst y))
          #+END_SRC
+
+** Correcting Syntax
+   
+   In the following examples, you’ll be shown syntactically incorrect code. Type it in and try to
+   correct it in your text editor, validating it with GHC or GHCi.
+
+   1. Here, we want a function that adds 1 to the length of a string argument and returns that
+      result
+
+      #+BEGIN_SRC haskell 
+        -- given
+        x = (+)
+        F xs = w 'x' 1
+          where w = length xs
+
+        -- correction
+        x = (x)
+
+        f xs = w `x` 1 -- back ticks and lowercase fn name
+          where w = length xs
+      #+END_SRC
+
+   2. This is supposed to be the identity function, id.
+      
+      #+BEGIN_SRC haskell
+      -- given
+      \X = x
+      
+      -- correction
+      \x -> x
+      #+END_SRC
+
+   3. When fixed, this function will return 1 from the value (1, 2)
+
+      #+BEGIN_SRC haskell
+      -- given 
+      f (a b) = A
+      
+      -- correction
+      f (a, b) = a
+      #+END_SRC
