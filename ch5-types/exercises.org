@@ -436,3 +436,77 @@
    Your goal is to make the ???’d declaration pass the typechecker by modifying it alone.
 
    Here’s a worked example for how we present these exercises and how you are expected to solve them. Given the following:
+   
+   #+BEGIN_SRC haskell
+     data Woot
+     data Blah
+     f :: Woot -> Blah
+     f = undefined
+     g :: (Blah, Woot) -> (Blah, Blah)
+     g = ???
+   #+END_SRC
+
+   Here it’s 𝑔 that you’re supposed to implement; however, you can’t evaluate anything. You’re to
+   only use type-checking and typeinference to validate your answers. Also note that we’re using a
+   trick for defining datatypes which can be named in a type signature, but have no values. Here’s
+   an example of a valid solution:
+
+   #+BEGIN_SRC haskell
+     g :: (Blah, Woot) -> (Blah, Blah)
+     g (b, w) = (b, f w)
+   #+END_SRC
+
+   1. 
+
+      #+BEGIN_SRC haskell
+        f :: Int -> String
+        f = undefined
+        g :: String -> Char
+        g = undefined
+        h :: Int -> Char
+        -- h = ???
+        h x = g ( f x ) -- give f an int, get a str, then give g that str, recieving a Char in return
+      #+END_SRC
+
+   2. 
+
+      #+BEGIN_SRC haskell
+        data A
+        data B
+        data C
+        q :: A -> B
+        q = undefined
+        w :: B -> C
+        w = undefined
+        e :: A -> C
+        -- e = ???
+        e x = q w x
+      #+END_SRC
+
+   3. 
+
+       #+BEGIN_SRC haskell
+         data X
+         data Y
+         data Z
+         xz :: X -> Z
+         xz = undefined
+         yz :: Y -> Z
+         yz = undefined
+         xform :: (X, Y) -> (Z, Z)
+         -- xform = ???
+
+         xform (x, y) = (xz x, (yz y))
+       #+END_SRC
+
+   4. 
+
+      #+BEGIN_SRC haskell
+        munge :: (x -> y)
+          -> (y -> (w, z))
+          -> x
+          -> w
+        -- munge = ???
+
+        munge xToY yToWZ x = fst (yToWZ (xToY x))
+      #+END_SRC
