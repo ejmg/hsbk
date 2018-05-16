@@ -15,3 +15,30 @@
              i == i'
        #+END_SRC
 
+    2. 
+        #+BEGIN_SRC haskell
+          -- given
+          data TwoIntegers =
+            Two Integer Integer
+
+          instance Eq TwoIntegers where
+            (==) (Two a b) (Two a' b') =
+              a == a' &&
+              b == b'
+        #+END_SRC
+
+    3. 
+       #+BEGIN_SRC haskell
+         -- given
+         data StringOrInt =
+           TisAnInt Int
+           | TisAString String
+
+         instance Eq StringOrInt where
+           (==) (TisAnInt a) (TisAnInt a') =
+             a == a'
+           (==) (TisAString b) (TisAString b') =
+             b == b'
+           (==) _ _ = False
+       #+END_SRC
+

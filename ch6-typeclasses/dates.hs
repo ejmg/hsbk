@@ -25,3 +25,4 @@ instance Eq Date where
        (Date weekday' dayOfMonth') =
     weekday == weekday'
     && dayOfMonth == dayOfMonth'
+
