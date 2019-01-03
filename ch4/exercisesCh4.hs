@@ -1,4 +1,4 @@
-module ExercisesCH4 where
+module ExercisesCh4 where
 
 p = "Papuchon"
 s = "The Simons"
