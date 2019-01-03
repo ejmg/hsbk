@@ -215,3 +215,36 @@ a''' :: (a -> b) -> a -> b
 -- Answer:
 
 a''' aToB a = aToB a
+
+
+-- Fix it.
+
+-- # 1:
+
+-- module Sing where
+
+fstString :: [Char] -> [Char]
+fstString x = x ++ " in the rain"
+
+sndString :: [Char] -> [Char]
+sndString x = x ++ " over the rainbow"
+
+sing = if (x < y) -- 
+       then fstString x
+       else sndString x
+  where x = "Singin"
+        y = "Somewhere"
+
+-- # 2:
+
+-- module Arith3Broken where
+
+main :: IO ()
+
+main = do
+  print (1 + 2)
+  putStrLn "10"
+  print (negate (-1))
+  print ((+) 0 blah)
+    where blah = negate 1
+    
