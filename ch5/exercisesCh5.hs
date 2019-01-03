@@ -93,4 +93,125 @@ b'4 = 10000 * c'4
   where c'4 = 3 -- or just replace with literal, declare at top level, etc
 
 
--- Type variable or specific constructor?
+-- Write a type signature
+
+-- # 1:
+
+-- given:
+
+functionH (x:_) = x
+
+-- answer
+
+functionH :: [a] -> a
+
+-- # 2:
+
+-- given:
+
+functionC x y =
+  if (x > y)
+  then True
+  else False
+
+functionC :: (Ord a) => a -> a -> Bool
+
+-- Given a type, write the function
+
+-- Example
+
+-- Given:
+
+myFunc :: (x -> y)
+       -> (y -> z)
+       -> (c)
+       -> (a, x)
+       -> (a, z)
+
+-- write the function!
+
+-- answer:
+
+myFunc xToY yToZ _ (a, x) =
+  (a, yToZ . xToY $ x)
+
+-- # 1:
+
+-- Given:
+i :: a -> a
+
+-- answer:
+i x = x
+
+-- # 2:
+
+-- Given:
+
+c :: a -> b -> a
+
+-- answer:
+
+c x _ = x
+
+-- # 3
+
+-- Given:
+
+c'' :: b -> a -> b
+
+-- Answer:
+
+c'' x _ = x -- Note, alpha equivalence with # 2.
+
+-- # 4:
+
+-- Given:
+
+c' :: a -> b -> b
+
+-- Answer:
+
+c' _ y = y
+
+-- # 5:
+
+-- Given:
+
+r :: [a] -> [a]
+
+-- Answer:
+
+r x = tail x -- multiple valid answers.
+
+-- # 6:
+
+-- Given:
+
+co :: (b -> c) -> (a -> b) -> a -> c
+
+
+-- Answer:
+
+co bToC aToB a =
+  bToC (aToB a)  -- This is def of function composition, i think.
+
+-- # 7:
+
+-- Given:
+
+a'' :: (a -> c) -> a -> a
+
+-- Answer:
+
+a'' _ a =
+  a
+
+-- # 8:
+
+-- Given:
+
+a''' :: (a -> b) -> a -> b
+
+-- Answer:
+
+a''' aToB a = aToB a
