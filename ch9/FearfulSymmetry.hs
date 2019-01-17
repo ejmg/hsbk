@@ -65,3 +65,23 @@ myLines sntnc = go sntnc []
           | (sntnc' /= "") =
               go "" (ls ++ [(takeWhile (/='\n') sntnc')])
           | otherwise = ls
+
+
+-- # 3:
+
+-- Refactor out the general behavior of the last two functions by
+-- parameterizing the character the string is split on.
+
+-- Answer:
+
+mySplit :: String -> Char -> [String]
+mySplit str char = go str []
+  where go str' ls
+          | str' =="" = ls
+          | (dropWhile (/= char) str' /="") && ((head str') /= char) =
+              go (dropWhile(/= char) str') (ls ++ [(takeWhile (/= char) str')])
+          | (dropWhile(/= char) str' /="") =
+              go (tail str') ls
+          | (str' /= "") =
+              go "" (ls ++ [(takeWhile (/= char) str')])
+          | otherwise = ls
