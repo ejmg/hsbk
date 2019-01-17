@@ -60,18 +60,8 @@ myLines sntnc = go sntnc []
           | (dropWhile (/='\n') sntnc' /="") && ((head sntnc') /= '\n')=
               go (dropWhile (/='\n') sntnc')
               (ls ++ [(takeWhile (/='\n') sntnc')])
-          | (sntnc' /= "") && ((last sntnc') /= '\n') =
-              go "" (ls ++ [sntnc'])
-          | (sntnc' /= "") =
+          | (dropWhile (/='\n') sntnc' /="") =
               go (tail sntnc') ls
-          | otherwise = []
-
--- myLines sntnc = go sntnc []
---   where go sntnc' ls
---           | sntnc' == "" = ls
---           | (dropWhile (/='\n') sntnc' /="") =
---               go (dropWhile (/='\n') sntnc')
---               (ls ++ [(takeWhile (/='\n') sntnc')])
---           | (sntnc' /= "") =
---               go "" (ls ++ [sntnc'])
---           | otherwise = []
+          | (sntnc' /= "") =
+              go "" (ls ++ [(takeWhile (/='\n') sntnc')])
+          | otherwise = ls
