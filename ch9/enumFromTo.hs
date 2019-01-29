@@ -46,7 +46,7 @@ eftInt :: Int
 eftInt x y = go x y []
   where go i j ls
           | i == j = (i : ls)
-          | i < j = 
+          | i < j =
             go i (j - 1) (j : ls)
           | otherwise = []
 
@@ -59,5 +59,5 @@ eftChar c c' = go c c' []
   where go i j ls
           | i == j = (i : ls)
           | i < j =
-            go i (pred j) (j : ls)
+              go i (pred j) (j : ls)
           | otherwise = []

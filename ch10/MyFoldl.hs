@@ -18,6 +18,7 @@ foldl' f acc (x:xs) = foldl' f (f acc x) xs
 
 -- Newer type definition per GHC >= 7.10
 -- foldl'' :: Foldable t
+-- inherently 
 --        => (b -> a -> b)
 --        -> b
 --        -> t a
