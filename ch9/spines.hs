@@ -2,19 +2,22 @@ module Spines where
 
 -- This program will have a runtime error lol.
 
+{-
+  Demonstrates the nature of nonstrict eval in haskell, in particular how
+  spines are evaluated apart from their con cell values when in lists.
+  Functions such as length, which must traverse the structure (spine) of the
+  list, and syntax such as pattern matching will force strictness on the spine
+  without evaluating the values of con cells!
+-}
 
--- Demonstrates the nature of nonstrict eval in haskell, in particular how
--- spines are evaluated apart from their con cell values when in lists.
--- Functions such as length, which must traverse the structure (spine) of the
--- list, and syntax such as pattern matching will force strictness on the spine
--- without evaluating the values of con cells!
-
--- > :sprint undefLs
--- undefLs = _
--- > length undefLs -- will throw no error!
--- 3
--- > :sprint undefLs
--- undefLs = [_, _, _] -- spine was evaluated, but NOT the values!
+{-
+  > :sprint undefLs
+  undefLs = _
+  > length undefLs -- will throw no error!
+  3
+  > :sprint undefLs
+  undefLs = [_, _, _] -- spine was evaluated, but NOT the values!
+-}
 undefLs = [undefined, undefined, undefined]
 
 -- > length badUndefLs -- This will cause an error because the spine itself
