@@ -1,0 +1,7 @@
+1. Both
+2. WHNF
+3. neither, no outermost data constructor & unevaluated 
+4. neither, ^^
+5. neither, 
+6. WHNF
+7. Both

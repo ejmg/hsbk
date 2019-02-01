@@ -1,0 +1,35 @@
+* More Bottoms
+  1. Bottom 
+  2. returns [2]
+  3. Bottom
+  4. Returns a list of boolean values indicating whether a given char in a
+     string was a vowel, i.e. itIsMystery "foo" = [False, True, True].
+     - It's type is =String -> [Bool]=.
+  5. 
+     1. returns list of squared values
+     2. returns list of min values of each least range in the list
+     3. returns list of sums for each range
+  6. 
+     #+BEGIN_SRC haskell
+       import Data.Bool(bool)
+       foo ifBoolMap = map (\x -> bool x (-x) (x==3)) [1..10]
+     #+END_SRC
+* filtering
+  1. 
+     #+BEGIN_SRC haskell
+       -- including lists containing 0.
+       mult3 xs = filter (\x -> mod x 3 == 0) xs
+     #+END_SRC
+  2. 
+     #+BEGIN_SRC haskell
+       numMult3 xs = length . mult3 xs
+     #+END_SRC
+  3. 
+     #+BEGIN_SRC haskell
+       -- wonder if more elegant way to do the comparison?
+       rmArticles xs = filter (\w -> w /= "the" && w /= "a" && w /="an") (words xs)
+     #+END_SRC
+* 9.11: zipping exercises
+  1. 
+     #+BEGIN_SRC haskell
+     #+END_SRC
