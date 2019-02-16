@@ -3,7 +3,7 @@
 /[a work in progress!]/
 
 This repository contains the notes and solutions I've written up so far as I
-work through [[haskellbook.com][Haskell Programming from First Principles]] by Christopher Allen and
+work through [[http://haskellbook.com][Haskell Programming from First Principles]] by Christopher Allen and
 Julie Moronuki.
 
 This effort is largely made possible by my directed readings course for spring
