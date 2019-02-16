@@ -1,15 +1,15 @@
-# hsbk
+* hsbk
 
-*[a work in progress!]*
+/[a work in progress!]/
 
 This repository contains the notes and solutions I've written up so far as I
-work through [Haskell Programming from First Principles](haskellbook.com) by
-Christopher Allen and Julie Moronuki.
+work through [[haskellbook.com][Haskell Programming from First Principles]] by Christopher Allen and
+Julie Moronuki.
 
 This effort is largely made possible by my directed readings course for spring
 2019, overseen by Dr. Song at UMKC.
 
-## Status
+** Status
 
 Currently, the logic and organization of this repository is limited mostly to
 keeping exercises and notes under the proper chapter of the book. There are
