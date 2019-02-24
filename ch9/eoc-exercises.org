@@ -1,0 +1,139 @@
+* ch9: lists end of chapter exercises
+** =Data.Char=
+   
+   1. Query the types of...
+
+      #+BEGIN_SRC 
+      > :t isUpper
+      isUpper :: Char -> Bool
+      > :t toUpper
+      toUpper :: Char -> Char
+      #+END_SRC
+
+   2. Given the following behaviors...
+
+      #+BEGIN_SRC haskell
+        import Data.Char
+
+        filterUpper :: [Char] -> [Char]
+        filterUpper str = filter isUpper str
+      #+END_SRC
+
+   3. Write a function that will...
+      
+      #+BEGIN_SRC haskell
+        import Data.Char
+        capFirstLetter :: String -> String
+        capFirstLetter str = if (isUpper $ head str)
+                             then str 
+                             else (toUpper $ head str) : tail str
+      #+END_SRC
+
+   4. Now make a new version of that function...
+
+      #+BEGIN_SRC haskell
+        import Data.Char
+
+        capString :: String -> String
+        capString [] = []
+        capString str = if (isUpper $ head str)
+                        then str
+                        else (toUpper $ head str) : (capString $ tail str)
+      #+END_SRC
+
+   5. to do the final exercise in this section...
+      
+      #+BEGIN_SRC haskell
+        import Data.Char
+
+        capHead :: String -> Char
+        capHead str = if isUpper $ head str
+                      then head str
+                      else toUpper $ head str
+      #+END_SRC
+
+   6. Cool. Good work. Now...
+
+      #+BEGIN_SRC haskell
+        import Data.Char
+
+        capHead' str = toUpper . head $ str
+        capHead'' = toUpper . head
+      #+END_SRC
+
+** Ciphers
+
+   Make a basic caesar cipher, seems reasonable.
+
+   The key issue here is we want to be able to wrap around the alphabet
+   trivially for a given input and offset. =Data.Char= has some functions that
+   provide for manipulating =Char= and =Integer= values and Prelude's =mod=
+   will be helpful.
+
+   #+BEGIN_SRC haskell
+     chr :: Int -> Char
+     ord :: Char -> Int
+     mod :: Integral a => a -> a -> a
+   #+END_SRC
+
+   As for my solution...
+
+   #+BEGIN_SRC haskell
+   
+   #+END_SRC
+
+** Writing your own standard functions
+
+   1. =myOr=...
+
+      #+BEGIN_SRC haskell
+        module Cipher where
+
+        import Data.Char
+
+        myOr :: [Bool] -> Bool
+        myOr [] = False
+        myOr (True:_) = True
+        myOr (_:xs) = myOr xs
+      #+END_SRC
+
+   2. myAny returns True if...
+
+      #+BEGIN_SRC haskell
+        myAny :: (a -> Bool) -> [a] -> Bool
+        myAny _ [] = False
+        myAny f (x:xs) =
+          if f x == True
+          then True
+          else myAny f xs
+      #+END_SRC
+
+   3. After you write the recursive myElem...
+
+      #+BEGIN_SRC haskell
+        myElem :: Eq a => a -> [a] -> Bool
+        myElem _ [] = False
+        myElem a (x:xs) = if a == x
+                          then True
+                          else myElem a xs
+
+        myElem' :: Eq a => a -> [a] -> Bool
+        myElem' _ [] = False
+        myElem' a ls = any (a ==) ls
+      #+END_SRC
+
+   4. Implement =myReverse=...
+
+      #+BEGIN_SRC haskell
+        myReverse :: [a] -> [a]
+        myReverse [] = []
+        myReverse (x:[]) = [x]
+        myReverse (x:xs) = myReverse xs ++ myReverse [x]
+      #+END_SRC
+
+   5. =squish= flattens a list of lists into a list...
+
+      #+BEGIN_SRC haskell
+        squish :: [[a]] -> [a]
+        squish = 
+      #+END_SRC
